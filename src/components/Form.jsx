@@ -32,7 +32,7 @@ function Form() {
                         <div class='input'>
                             {index != inputList.length && 
                             <Input 
-                                value = {user.name}
+                                defaultValue = {user.name}
                                 placeholder={'Enter the name'} 
                                 onChange={e => handleInputChange(e, index)} 
                             />}
