@@ -5,7 +5,7 @@ function Input(props) {
         <div class='formInput'>
             <input class='form-control' 
                    type="text"
-                   name="userName" 
+                   name={props.name}
                    value={props.value} 
                    placeholder={props.placeholder} 
                    onChange={props.onChange}

@@ -3,6 +3,7 @@ import Input from './Input';
 
 function Form() {
 
+    const [name, setName] = useState('');
     const [inputList, setInputList] = useState([{ name: '' }, { name: ''}]);
 
     const handleInputChange = (e, index) => {
@@ -32,9 +33,10 @@ function Form() {
                         <div class='input'>
                             {index != inputList.length && 
                             <Input 
-                                defaultValue = {user.name}
+                                value = {user.name}
+                                name={'name'}
                                 placeholder={'Enter the name'} 
-                                onChange={e => handleInputChange(e, index)} 
+                                onChange={(e) => handleInputChange(e, index)} 
                             />}
 
                             {inputList.length !== 1 && <button 
