@@ -1,37 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&display=swap');
 
-header {
-    font-family: 'Pacifico', cursive;
-    text-align: left;
-    background-color: #D8BBEC;
-    margin: auto;
-    padding: 8px 60px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-    color: #3E254F;
-}
-
-.introHeader {
-    margin: auto;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    font-family: 'Barlow Semi Condensed', sans-serif;
-    color: #D8BBEC;
-    font-size: 45px;
-}
 
 body {
     margin: 0;
     background-color: #643782;
     color: #D8BBEC;
     text-align: center;
-}
-
-.form-group {
-    padding:30px 300px 30px 300px;
-    width: 100%;
 }
 
 .btn {
@@ -56,23 +31,3 @@ body {
     margin: 1px;
 }
 
-.formInput {
-    padding: 4px;
-    position:relative;
-    display:inline-block;
-    z-index: 1;
-    width:70%;
-}
-
-img {
-    width: 10px;
-    height:auto;
-}
-
-.input {
-    text-align: left;
-    margin-left:22%;
-    margin-top: 2px;
-    margin-right: 2px;
-    margin-bottom: 2px;
-}

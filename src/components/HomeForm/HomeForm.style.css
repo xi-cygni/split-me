@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&display=swap');
+
+.introHeader {
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: #D8BBEC;
+    font-size: 45px;
+}

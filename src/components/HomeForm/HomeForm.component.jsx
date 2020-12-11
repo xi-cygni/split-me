@@ -1,50 +1,11 @@
 import React, { useState } from 'react';
-import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import { InputBase, Card, CardContent }  from "@material-ui/core/"
-import { makeStyles, ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { NoEncryption } from '@material-ui/icons';
-
-
-const useStyles = makeStyles({
-    plusMinusButtonStyle: {
-        color: "#D8BBEC",
-        padding: "0",
-        margin: "5px",
-        marginTop: "10px"
-    }, 
-
-    cardStyle: {
-        background: "#7a449e",
-        margin: "5% 15%"
-    }, 
-
-    cardContentStyle: {
-
-    },
-
-    textFieldStyle: {
-        margin: "5px",
-        width: "50%",
-        background: "#D8BBEC",
-        borderRadius: "5px"
-    }, 
-
-    submitButtonStyle: {
-        marginTop: "30px"
-    },
-
-    iconStyle: {
-        height: "2em",
-    },
-
-    violetUnderline: {
-        color: "#D8BBEC"
-    }
-});
+import { Card, CardContent }  from "@material-ui/core/"
+import { useStyles } from "./HomeForm.style";
+import './HomeForm.style.css'
 
 
 export default function HomeForm() {
@@ -98,10 +59,13 @@ export default function HomeForm() {
                             variant="outlined"
                             value={participant.name}
                             className={classes.textFieldStyle}
-                            InputProps={{ }}
+                            InputProps={{
+                                classes: {
+                                    root: classes.root,
+                                    notchedOutline: classes.notchedOutline
+                                }}}
                             onChange={(event) => handleChangeInput(index, event)}
                         />
-                     
 
                         <Button variant="text" className={classes.plusMinusButtonStyle} onClick={() => handleAddField()}>
                             <AddIcon className={classes.iconStyle}/>
@@ -112,9 +76,7 @@ export default function HomeForm() {
                     </div>
                 ))}
 
-
-                <Button variant="contained" className={classes.submitButtonStyle} >Submit</Button>
-                
+                <Button variant="contained" size="large" className={classes.submitButtonStyle}>Submit</Button>
 
             </form>
             </CardContent>
