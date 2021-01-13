@@ -25,6 +25,14 @@ const useStyles = makeStyles({
         borderRadius: "5px",
     }, 
 
+    nameTextFieldStyle: {
+        marginBottom: "20px",
+        width: "30%",
+        background: "#D8BBEC",
+        borderRadius: "5px",
+        textAlign: "left",
+    },
+
     submitButtonStyle: {
         marginTop: "50px",
         marginBottom:"50px",
