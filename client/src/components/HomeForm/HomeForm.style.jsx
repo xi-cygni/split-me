@@ -3,15 +3,15 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
 
     plusMinusButtonStyle: {
-        color: "#D8BBEC",
+        color: "#9fc7ac",
         padding: "0",
-        margin: "5px",
-        marginTop: "10px"
+        margin: "1px",
+        marginTop: "10px",
     }, 
 
     cardStyle: {
-        background: "#7a449e",
-        margin: "5% 15%"
+        background: "#7ba685",
+        margin: "5% 15%",
     }, 
 
     cardContentStyle: {
@@ -21,14 +21,14 @@ const useStyles = makeStyles({
     textFieldStyle: {
         margin: "5px",
         width: "50%",
-        background: "#D8BBEC",
+        background: "#9fc7ac",
         borderRadius: "5px",
     }, 
 
     nameTextFieldStyle: {
         marginBottom: "20px",
         width: "30%",
-        background: "#D8BBEC",
+        background: "#9fc7ac",
         borderRadius: "5px",
         textAlign: "left",
     },
@@ -36,8 +36,11 @@ const useStyles = makeStyles({
     submitButtonStyle: {
         marginTop: "50px",
         marginBottom:"50px",
-        background:"#3E254F",
-        color: "#D8BBEC",
+        background:"#474747",
+        color: "#9fc7ac",
+        '&:hover': {
+            backgroundColor:"#525252"
+        }
     },
 
     iconStyle: {
@@ -45,33 +48,28 @@ const useStyles = makeStyles({
     },
 
     violetUnderline: {
-        color: "#D8BBEC"
+        color: "#9fc7ac"
     }, 
 
     root: {
+        
         '&:hover $notchedOutline': {
-            borderColor: '#D8BBEC'
+            border: "none"
         },
 
         '$focused': {
-            color: "#D8BBEC"
+            color: "#9fc7ac",
         },
 
         '&:hover $focused': {
-            borderColor: '#D8BBEC'
+            border: "none"
         },
 
+        '&:hover': {
+            border: "none"
+        },
     },
-
-    focused: {
-        color: "#D8BBEC",   
-    },
-
-    filled: {
-        color: "#D8BBEC",
-    },
-    notchedOutline: {
-    },   
+        
 });
 
 export {useStyles}

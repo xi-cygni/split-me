@@ -3,10 +3,12 @@
 header {
     font-family: 'Pacifico', cursive;
     text-align: left;
-    background-color: #D8BBEC;
+    background-color: #bedbbb;
     margin: auto;
     padding: 8px 60px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-    color: #3E254F;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    color: #474747;
 }
+
+
 

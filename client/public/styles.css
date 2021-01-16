@@ -1,12 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&display=swap');
 
+:root {
+    --gradient: linear-gradient(
+        45deg,
+        #70af85,
+        #9fc7ac,
+        #c6ebc9,
+        #9fc7ac,
+        #9fc7ac
+    );
+}
 
 body {
     margin: 0;
-    background-color: #643782;
-    color: #D8BBEC;
+    background-image: var(--gradient);
+    background-size:400%;
+    background-position: left;
+    animation: bg-animation 5s infinite alternate;
     text-align: center;
+}
+
+@keyframes bg-animation {
+    0% {
+        background-position: left;
+    }
+    100% {
+        background-position: right;
+    }
 }
 
 .btn {
@@ -20,7 +41,7 @@ body {
 .btn:hover {
     background-color: #362144;
     border-color: #362144;
-    color: #D8BBEC;
+    color: #bedbbb;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);;
 }
 
@@ -30,4 +51,6 @@ body {
     padding: 7px 15px 7px 15px;
     margin: 1px;
 }
+
+
 

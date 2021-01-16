@@ -104,7 +104,6 @@ export default function HomeForm() {
             <CardContent className={classes.cardContentStyle}>
 
                 <h1 className="introHeader">Fill in the form</h1>
-
                 <form className={classes.root} onSubmit={handleSubmit}>
                     <div style={{ display: 'block' }}>
                         <TextField
