@@ -8,7 +8,6 @@ import { Card, CardContent } from "@material-ui/core/"
 import { useStyles } from "./HomeForm.style";
 import './HomeForm.style.css'
 
-
 export default function HomeForm() {
 
     const classes = useStyles();
@@ -17,18 +16,29 @@ export default function HomeForm() {
     const [participantList, setParticipantList] = useState([
         { name: '' }, { name: '' },
     ]);
+    const [expenseList, setExpenseList] = useState([
+        { name: '' }, { name: '' },
+    ]);
 
-    const handleChangeInput = (index, event) => {
-        const values = [...participantList];
+    const handleEventNameChange = (event) => {
+        setEventName(event.target.eventName);
+    }
+
+    //TODO can simplify it for participants and expenses handlers into one, add sth more than index
+
+    /* PARTICIPANTS */
+
+    const handleParticipantInput = (index, event) => {
+        let values = [...participantList];
         values[index][event.target.name] = event.target.value;
         setParticipantList(values);
     }
 
-    const handleAddField = () => {
+    const handleAddParticipantField = () => {
         setParticipantList([...participantList, { name: '' }]);
     }
 
-    const handleRemoveField = (index) => {
+    const handleRemoveParticipantField = (index) => {
         let values = [...participantList];
 
         if (participantList.length === 1) {
@@ -42,9 +52,40 @@ export default function HomeForm() {
         }
     }
 
-    const handleEventNameChange = (event) => {
-        setEventName(event.target.eventName);
+    /* EXPENSES */
+
+    const handleExpenseInput = (index, event) => {
+        let values = [...expenseList];
+        values[index][event.target.name] = event.target.value;
+        setExpenseList(values);
+
+        console.log("list :", expenseList);
+        console.log("index :", index);
+        console.log("values :", values);
+        console.log("event.target.name :", event.target.name);
+        console.log("event.target.value :", event.target.value);
+
     }
+
+    const handleAddExpenseField = () => {
+        setExpenseList([...expenseList, { name: '' }]);
+    }
+
+    const handleRemoveExpenseField = (index) => {
+        let values = [...expenseList];
+
+        if (expenseList.length === 1) {
+            values.splice(index, 1);
+            setExpenseList(values);
+            values = [{ name: '' }];
+            setExpenseList(values);
+        } else {
+            values.splice(index, 1);
+            setExpenseList(values);
+        }
+    }
+
+    /* SUBMIT */
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -53,66 +94,103 @@ export default function HomeForm() {
     const submitSplitMeProject = () => {
         Axios.post('http://localhost:3001/api/insert', {
             eventName: eventName,
-            participantList: participantList
+            participantList: participantList,
+            expenseList: expenseList
         });
     }
-
-
 
     return (
         <Card className={classes.cardStyle}>
             <CardContent className={classes.cardContentStyle}>
+
                 <h1 className="introHeader">Fill in the form</h1>
 
                 <form className={classes.root} onSubmit={handleSubmit}>
+                    <div style={{ display: 'block' }}>
+                        <TextField
+                            label="Event name"
+                            name="eventName"
+                            variant="outlined"
+                            className={classes.textFieldStyle, classes.nameTextFieldStyle}
+                            InputProps={{
+                                classes: {
+                                    root: classes.root,
+                                    notchedOutline: classes.notchedOutline
+                                }
+                            }}
+                            onChange={(event) => handleEventNameChange(event)}
+                        />
+                    </div>
 
-                    <TextField
-                        label="Event name"
-                        name="eventName"
-                        variant="outlined"
-                        className={classes.textFieldStyle, classes.nameTextFieldStyle}
-                        InputProps={{
-                            classes: {
-                                root: classes.root,
-                                notchedOutline: classes.notchedOutline
-                            }
-                        }}
-                        onChange={(event) => handleEventNameChange(event)}
-                    />
+                    {/* PARTICIPANTS */}
 
-                    {participantList.map((participant, index) => (
-                        <div key={index}>
+                    <div style={{ display: 'inline-grid' }}>
+                        {participantList.map((participant, index) => (
+                            <div key={index}>
 
-                            <TextField
-                                label="Participant name"
-                                name="name"
-                                variant="outlined"
-                                value={participant.name}
-                                className={classes.textFieldStyle}
-                                InputProps={{
-                                    classes: {
-                                        root: classes.root,
-                                        notchedOutline: classes.notchedOutline
-                                    }
-                                }}
-                                onChange={(event) => handleChangeInput(index, event)}
-                            />
+                                <TextField
+                                    label="Participant name"
+                                    name="name"
+                                    variant="outlined"
+                                    value={participant.name}
+                                    className={classes.textFieldStyle}
+                                    InputProps={{
+                                        classes: {
+                                            root: classes.root,
+                                            notchedOutline: classes.notchedOutline
+                                        }
+                                    }}
+                                    onChange={(event) => handleParticipantInput(index, event)}
+                                />
 
-                            <Button variant="text" className={classes.plusMinusButtonStyle} onClick={() => handleAddField()}>
-                                <AddIcon className={classes.iconStyle} />
-                            </Button>
-                            <Button variant="text" className={classes.plusMinusButtonStyle} onClick={() => handleRemoveField(index)}>
-                                <RemoveIcon className={classes.iconStyle} />
-                            </Button>
-                        </div>
-                    ))}
+                                <Button variant="text" className={classes.plusMinusButtonStyle} onClick={() => handleAddParticipantField()}>
+                                    <AddIcon className={classes.iconStyle} />
+                                </Button>
+                                <Button variant="text" className={classes.plusMinusButtonStyle} onClick={() => handleRemoveParticipantField(index)}>
+                                    <RemoveIcon className={classes.iconStyle} />
+                                </Button>
+                            </div>
+                        ))}
+                    </div>
 
-                    <Button variant="contained"
-                        size="large"
-                        className={classes.submitButtonStyle}
-                        onClick={submitSplitMeProject}
-                    >Submit
+                    {/* EXPENSES */}
+                    <div style={{ display: 'inline-grid' }}>
+                        {expenseList.map((expense, index) => (
+                            <div key={index}>
+
+                                <TextField
+                                    label="Expense name"
+                                    name="name"
+                                    variant="outlined"
+                                    value={expense.name}
+                                    className={classes.textFieldStyle}
+                                    InputProps={{
+                                        classes: {
+                                            root: classes.root,
+                                            notchedOutline: classes.notchedOutline
+                                        }
+                                    }}
+                                    onChange={(event) => handleExpenseInput(index, event)}
+                                />
+
+                                <Button variant="text" className={classes.plusMinusButtonStyle} onClick={() => handleAddExpenseField()}>
+                                    <AddIcon className={classes.iconStyle} />
+                                </Button>
+                                <Button variant="text" className={classes.plusMinusButtonStyle} onClick={() => handleRemoveExpenseField(index)}>
+                                    <RemoveIcon className={classes.iconStyle} />
+                                </Button>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div style={{ display: 'block' }}>
+                        <Button variant="contained"
+                            size="large"
+                            className={classes.submitButtonStyle}
+                            onClick={submitSplitMeProject}
+                        >Submit
                     </Button>
+                    </div>
 
                 </form>
             </CardContent>
